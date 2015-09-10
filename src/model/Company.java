@@ -5,8 +5,11 @@ public class Company {
 	private Long idCompany;
 	private String nameCompany;
 	
-	public Company(){
+
+	public Company(Long idCompany, String nameCompany) {
 		super();
+		this.idCompany = idCompany;
+		this.nameCompany = nameCompany;
 	}
 
 	public Long getIdCompany() {

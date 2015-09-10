@@ -9,9 +9,17 @@ public class Computer {
 	private Timestamp discontinued;
 	private Long company_id;
 	
-	public Computer(){
-		
+
+	public Computer(Long idComputer, String nameComputer, Timestamp introduced,
+			Timestamp discontinued, Long company_id) {
+		super();
+		this.idComputer = idComputer;
+		this.nameComputer = nameComputer;
+		this.introduced = introduced;
+		this.discontinued = discontinued;
+		this.company_id = company_id;
 	}
+
 
 	public Long getIdComputer() {
 		return idComputer;
