@@ -10,6 +10,7 @@ public class Computer {
 	private Long company_id;
 	
 
+
 	public Computer(Long idComputer, String nameComputer, Timestamp introduced,
 			Timestamp discontinued, Long company_id) {
 		super();
@@ -18,6 +19,7 @@ public class Computer {
 		this.introduced = introduced;
 		this.discontinued = discontinued;
 		this.company_id = company_id;
+
 	}
 
 
