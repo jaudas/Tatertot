@@ -11,13 +11,14 @@ import java.util.List;
 import model.Company;
 import model.Computer;
 
+import utils.FormatUtils;
 
 public class ComputerDaoImpl implements ComputerDao {
 	
 
-	private static final String URL = "jdbc:mysql://127.0.0.1/computer-database-db";
+	private static final String URL = "jdbc:mysql://127.0.0.1:3306/computer-database-db?zeroDateTimeBehavior=convertToNull";
 	private static final String USER = "root";
-	private static final String PASSWORD = "root";
+	private static final String PASSWORD = "";
 	
 	private static ComputerDao INSTANCE;
 	
@@ -58,7 +59,7 @@ public class ComputerDaoImpl implements ComputerDao {
 				//Lecture de la table ordinateur
 				Long idComputer = resultSet.getLong("computer.id");				
 				String nameComputer = resultSet.getString("computer.name");
-				Timestamp introduced = resultSet.getTimestamp("computer.introducted");
+				Timestamp introduced = resultSet.getTimestamp("computer.introduced");
 				Timestamp discontinued = resultSet.getTimestamp("computer.discontinued");
 				
 				
@@ -71,9 +72,11 @@ public class ComputerDaoImpl implements ComputerDao {
 				Computer c = new Computer();
 				c.setIdComputer(idComputer);
 				c.setNameComputer(nameComputer);
-				c.setIntroduced(introduced);
-				c.setDiscontinued(discontinued);
+				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
+				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
 				c.setCompany(company);
+				
+				System.out.println("/n L'ordinateur : " + c);
 				
 
 				
@@ -103,9 +106,15 @@ public class ComputerDaoImpl implements ComputerDao {
 	}
 
 
+	@Override
+	public Computer getById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 	@Override
-	public void create(Computer user) {
+	public void insert(Computer computer) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -27,6 +27,11 @@ public class Company {
 	public void setNameCompany(String nameCompany) {
 		this.nameCompany = nameCompany;
 	}
+
+	@Override
+	public String toString() {
+		return "Company [idCompany=" + idCompany + ", nameCompany=" + nameCompany + "]";
+	}
 	
 	
 

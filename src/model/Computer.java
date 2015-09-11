@@ -1,12 +1,13 @@
 package model;
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 public class Computer {
 	private Long idComputer;
 	private String nameComputer;
-	private Timestamp introduced;
-	private Timestamp discontinued;
+	private Date introduced;
+	private Date discontinued;
 	private Company company;
 
 
@@ -22,12 +23,15 @@ public class Computer {
 
 	}
 	
+	@Override
+	public String toString() {
+		return "Computer [idComputer=" + idComputer + ", nameComputer=" + nameComputer + ", introduced=" + introduced
+				+ ", discontinued=" + discontinued + ", company=" + company + "]";
+	}
+
 	public Computer(){
 		
 	}
-	
-	
-
 
 	public Long getIdComputer() {
 		return idComputer;
@@ -45,19 +49,19 @@ public class Computer {
 		this.nameComputer = nameComputer;
 	}
 
-	public Timestamp getIntroduced() {
+	public Date getIntroduced() {
 		return introduced;
 	}
 
-	public void setIntroduced(Timestamp introduced) {
+	public void setIntroduced(Date introduced) {
 		this.introduced = introduced;
 	}
 
-	public Timestamp getDiscontinued() {
+	public Date getDiscontinued() {
 		return discontinued;
 	}
 
-	public void setDiscontinued(Timestamp discontinued) {
+	public void setDiscontinued(Date discontinued) {
 		this.discontinued = discontinued;
 	}
 

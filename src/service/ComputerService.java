@@ -1,14 +1,15 @@
-package dao;
+package service;
 
 import java.util.List;
 
 import model.Computer;
 
-public interface ComputerDao {
-
+public interface ComputerService {
+	
 	List<Computer> getAll();
-
+	
 	Computer getById(Long id);
 
-	void insert(Computer computer);
+	void insert(Computer user);
+
 }

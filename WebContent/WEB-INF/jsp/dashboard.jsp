@@ -1,4 +1,5 @@
-<jsp:include page="include/header.jsp" />
+<jsp:include page="../../include/header.jsp" />
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="container-fluid">
   <div class="row">
@@ -37,28 +38,18 @@
 			</thead>
 			<tbody>
 
-				<tr>
-					<td><a href="#" onclick="">ThinkPad T420</a></td>
-					<td>2011-01-01</td>
-					<td>2013-03-04</td>
-					<td>Lenovo</td>
-				</tr>
-				<tr>
-					<td><a href="#">Precision 3500</a></td>
-					<td>2010-05-07</td>
-					<td>2012-06-01</td>
-					<td>Dell</td>
-				</tr>
-				<tr>
-					<td><a href="#">Macbook Air</a></td>
-					<td>2005-05-09</td>
-					<td>2008-06-06</td>
-					<td>Apple</td>
-				</tr>
+				<c:forEach items="${requestScope.computers}" var="computer">
+					<tr>
+					<td>${computer.nameComputer}</td>
+					<td>${computer.introduced}</td>
+					<td>${computer.discontinued}</td>
+					<td>${computer.company.nameCompany}</td>
+					</tr>
+			</c:forEach>
 			</tbody>
 		</table>
 		</div>
 		</div>
 </div>
 
-<jsp:include page="include/footer.jsp" />
+<jsp:include page="../../include/footer.jsp" />
