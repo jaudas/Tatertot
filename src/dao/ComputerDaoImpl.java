@@ -5,10 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.LinkedList;
 import java.util.List;
 
-
-
+import model.Company;
 import model.Computer;
 
 
@@ -30,12 +30,16 @@ public class ComputerDaoImpl implements ComputerDao {
 		}
 		
 	}
+	
+	private ComputerDaoImpl(){
+		
+	}
 
 
 	@Override
 	public List<Computer> getAll() {
 
-		List<Computer> listComputer = null ;
+		List<Computer> listComputer = new LinkedList<Computer>() ;
 		
 		Connection connection = null;
 		Statement statement = null;
@@ -51,21 +55,25 @@ public class ComputerDaoImpl implements ComputerDao {
 			//Lecture du resultSet
 			while (resultSet.next()){
 				
-				Long idComputer = resultSet.getLong("id");				
-				String nameComputer = resultSet.getString("name");
-				Timestamp introduced = resultSet.getTimestamp("introducted");
-				Timestamp discontinued = resultSet.getTimestamp("discontinued");
-				Long idCompany = resultSet.getLong("id");
-				String companyName = resultSet.getString("company.name");
+				//Lecture de la table ordinateur
+				Long idComputer = resultSet.getLong("computer.id");				
+				String nameComputer = resultSet.getString("computer.name");
+				Timestamp introduced = resultSet.getTimestamp("computer.introducted");
+				Timestamp discontinued = resultSet.getTimestamp("computer.discontinued");
 				
+				
+				//Lecture de la table company
+				Long idCompany = resultSet.getLong("company.id");				
+				String nameCompany = resultSet.getString("company.name");
+				Company company = new Company(idCompany, nameCompany);
+				
+				//Création de l'objet computer
 				Computer c = new Computer();
 				c.setIdComputer(idComputer);
-				
-				c.setCompanyId(idComputer);
 				c.setNameComputer(nameComputer);
 				c.setIntroduced(introduced);
 				c.setDiscontinued(discontinued);
-				c.setCompanyId(idCompany);
+				c.setCompany(company);
 				
 
 				

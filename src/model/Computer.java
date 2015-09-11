@@ -7,19 +7,18 @@ public class Computer {
 	private String nameComputer;
 	private Timestamp introduced;
 	private Timestamp discontinued;
-	private Long companyId;
-	private String companyName;
+	private Company company;
 
 
 
 	public Computer(Long idComputer, String nameComputer, Timestamp introduced,
-			Timestamp discontinued, Long companyId) {
+			Timestamp discontinued, Company company) {
 		super();
 		this.idComputer = idComputer;
 		this.nameComputer = nameComputer;
 		this.introduced = introduced;
 		this.discontinued = discontinued;
-		this.companyId = companyId;
+		this.company = company;
 
 	}
 	
@@ -62,21 +61,14 @@ public class Computer {
 		this.discontinued = discontinued;
 	}
 
-	public Long getCompanyId() {
-		return companyId;
+	public Company getCompany() {
+		return company;
 	}
 
-	public void setCompanyId(Long company_id) {
-		this.companyId = company_id;
+	public void setCompany(Company company) {
+		this.company = company;
 	}
 
-	public String getCompanyName() {
-		return companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
 
 	
 }
