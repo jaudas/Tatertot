@@ -18,10 +18,15 @@ public class Computer {
 		this.idComputer = idComputer;
 		this.nameComputer = nameComputer;
 		this.introduced = introduced;
-		this.discontinued = discontinued;
+		this.discontinued = discontinued; 
 		this.company = company;
 
 	}
+	
+	public Computer(){
+		
+	}
+
 	
 	@Override
 	public String toString() {
@@ -29,9 +34,6 @@ public class Computer {
 				+ ", discontinued=" + discontinued + ", company=" + company + "]";
 	}
 
-	public Computer(){
-		
-	}
 
 	public Long getIdComputer() {
 		return idComputer;
