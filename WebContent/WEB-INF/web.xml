@@ -16,9 +16,19 @@
 		<servlet-class>controler.ComputerServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>InsertComputerServlet</servlet-name>
+		<servlet-class>controler.InsertComputerServlet</servlet-class>
+	</servlet>
+	
 		
 	<servlet-mapping>
 		<servlet-name>ComputerServlet</servlet-name>
 		<url-pattern>/dashboard</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>InsertComputerServlet</servlet-name>
+		<url-pattern>/addComputer</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -18,7 +18,7 @@
 		</form>
 		</div>
 		<div class="col-md-2">
-		<a id="add" href="addComputer.jsp" role="button" class="btn btn-success pull-right">Add Computer</a>
+		<a id="add" href="addComputer" role="button" class="btn btn-success pull-right">Add Computer</a>
 		</div>
 	</div>
 	<div class="row">
