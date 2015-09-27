@@ -35,6 +35,27 @@
 							<option value="1">Apple</option>
 							<option value="2">Dell</option>
 							<option value="3">Lenovo</option>
+							<option value="4">Thinking Machines</option>
+							<option value="5">RCA</option>
+							<option value="6">Netronics</option>
+							<option value="7">Tandy Corporation</option>
+							<option value="8">Commodore International</option>
+							<option value="9">MOS Technology</option>
+							<option value="10">Micro Instrumentation and Telemetry Systems</option>
+							<option value="11">IMS Associates</option>
+							<option value="12">Digital Equipment Corporation</option>
+							<option value="13">Lincoln Laboratory</option>
+							<option value="14">Moore School of Electrical Engineering</option>
+							<option value="16">IBM</option>
+							<option value="17">Nintendo</option>
+							<option value="18">Zemmix</option>
+							<option value="19">ASUS</option>
+							<option value="20">Sony</option>
+							<option value="21">Hewlett-Packard</option>
+							<option value="22">Lenovo Group</option>
+							
+							
+							
 						</select>
 					</div>
 				</div>
