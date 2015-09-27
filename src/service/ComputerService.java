@@ -1,7 +1,6 @@
 package service;
 
 import java.util.List;
-
 import model.Computer;
 
 public interface ComputerService {
@@ -10,6 +9,6 @@ public interface ComputerService {
 	
 	Computer getById(Long id);
 
-	void insert(Computer user);
+	void insert(Computer computer);
 
 }
