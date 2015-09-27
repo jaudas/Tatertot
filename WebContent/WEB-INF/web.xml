@@ -13,7 +13,7 @@
   
  	<servlet>
 		<servlet-name>ComputerServlet</servlet-name>
-		<servlet-class>controller.ComputerServlet</servlet-class>
+		<servlet-class>controler.ComputerServlet</servlet-class>
 	</servlet>
 	
 		

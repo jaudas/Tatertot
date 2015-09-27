@@ -3,7 +3,14 @@ package model;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Computers")
 public class Computer {
+	@Id
 	private Long idComputer;
 	private String nameComputer;
 	private Date introduced;

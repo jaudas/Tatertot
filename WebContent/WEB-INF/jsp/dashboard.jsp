@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <div class="row">
   	<div class="col-md-12">
-	<h1 id="homeTitle">456 Computers found</h1>
+	<h1 id="homeTitle">Dashboard</h1>
 	</div>
   </div>
 	<div class="row" id="actions">
@@ -48,6 +48,29 @@
 			</c:forEach>
 			</tbody>
 		</table>
+		
+		
+		<nav>
+  			<ul class="pagination">
+   			<li>
+      			<c:if test="${currentPage != 1}">
+        		<a href="dashboard?page=${currentPage - 1}"><span aria-hidden="true">&laquo;</span></a>
+        		</c:if>
+      		</li>
+    		<li><c:forEach begin="1" end="${noOfPages}" var="i">
+		                        <a href="dashboard?page=${i}">${i}</a>
+		        </c:forEach>
+    		</li>
+	    	<li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+  			</ul>
+		</nav>
+
+
+		
 		</div>
 		</div>
 </div>
