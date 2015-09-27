@@ -2,21 +2,28 @@ package model;
 
 public class Company {
 	
-	private Long idCompany;
+	private int idCompany;
 	private String nameCompany;
 	
-	public Company(Long idCompany, String nameCompany) {
+	public Company(int idCompany, String nameCompany) {
 
 		super();
 		this.idCompany = idCompany;
 		this.nameCompany = nameCompany;
 	}
+	
+	public Company(int idCompany) {
 
-	public Long getIdCompany() {
+		super();
+		this.idCompany = idCompany;
+		this.nameCompany = "noName";
+	}
+
+	public int getIdCompany() {
 		return idCompany;
 	}
 
-	public void setIdCompany(Long idCompany) {
+	public void setIdCompany(int idCompany) {
 		this.idCompany = idCompany;
 	}
 

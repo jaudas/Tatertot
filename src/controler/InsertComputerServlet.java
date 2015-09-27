@@ -1,6 +1,7 @@
 package controler;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Company;
 import model.Computer;
 import service.ComputerService;
 import service.ComputerServiceImpl;
@@ -42,17 +44,23 @@ public class InsertComputerServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String nameComputer = (String) request.getParameter("name");
-		// Date introduced = (Date) request.getParameter("introduced");
-		// Date discontinued = (Date) request.getParameter("discontinued");
-		// Company company = (String) request.getParameter("company");
+		System.out.println(nameComputer);
+		Date introduced = new Date();
+		Date discontinued = new Date();
+		int companyID = Integer.parseInt(request.getParameter("company"));
+		
+		Company c = new Company(companyID);
+		
 
 		Computer computer = new Computer();
 		computer.setNameComputer(nameComputer);
-		// computer.setIntroduced(introduced);
-		// computer.setDiscontinued(discontinued);
-		// computer.setCompany(company);
+		computer.setIntroduced(introduced);
+		computer.setDiscontinued(discontinued);
+		computer.setCompany(c);
+		
 		computerService.insert(computer);
 		RequestDispatcher rd = getServletContext().getRequestDispatcher(
 				response.encodeURL("/WEB-INF/jsp/addComputer.jsp"));
+		System.out.println(computer);
 	}
 }
