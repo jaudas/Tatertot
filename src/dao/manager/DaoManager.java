@@ -1,4 +1,4 @@
-package model.manager;
+package dao.manager;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
