@@ -97,10 +97,14 @@ public class ComputerDaoImpl implements ComputerDao {
 		return listComputer;
 	}
 
-	public List<Computer> getAll(int offset, int noOfRecords) {
+	
+	
+	public List<Computer> getAll(
+            int offset, 
+            int noOfRecords){
 
-		List<Computer> listComputer = new LinkedList<Computer>();
-
+		List<Computer> listComputer = new LinkedList<Computer>() ;
+		
 		Connection connection = null;
 		Statement statement = null;
 
@@ -211,5 +215,6 @@ public class ComputerDaoImpl implements ComputerDao {
 		}
 
 	}
+
 
 }

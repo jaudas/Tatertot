@@ -7,9 +7,10 @@ import model.Computer;
 public interface ComputerDao {
 
 	List<Computer> getAll();
-	public List<Computer> getAll(int offset, int noOfRecords);
+	List<Computer> getAll(int offset, int noOfRecords);
 
 	Computer getById(Long id);
+	
 
 	void insert(Computer computer);
 	int getNoOfRecords();

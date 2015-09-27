@@ -31,4 +31,6 @@
 		<servlet-name>InsertComputerServlet</servlet-name>
 		<url-pattern>/addComputer</url-pattern>
 	</servlet-mapping>
+	
+
 </web-app>
