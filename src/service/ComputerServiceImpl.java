@@ -36,4 +36,10 @@ public class ComputerServiceImpl implements ComputerService {
 		return INSTANCE;
 	}
 
+	@Override
+	public List<Computer> getAll(int offset, int noOfRecords, String searchString) {
+		return computerDao.getAll(offset, noOfRecords, searchString);
+		
+	}
+
 }

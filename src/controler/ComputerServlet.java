@@ -40,6 +40,9 @@ public class ComputerServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		String searchString = request.getParameter("searchString");
+		System.out.println("SearchString = " + searchString);
+		
 		int page = 1;
 		int computersPerPage = 20;
 		
@@ -49,7 +52,7 @@ public class ComputerServlet extends HttpServlet {
 		ComputerDao cDAO = ComputerDaoImpl.getInstance();
 		
 		List<Computer> listComputer = cDAO.getAll((page-1)*computersPerPage,
-                computersPerPage);
+                computersPerPage, searchString);
 		int noOfRecords = cDAO.getNoOfRecords();
         int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / computersPerPage);
 

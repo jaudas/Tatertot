@@ -10,13 +10,14 @@
 	<div class="row" id="actions">
 		<div class="col-md-10">
 		<form action="" method="GET" class="form-inline" role="form">
-			<input type="search" id="searchbox" name="search" class="form-control"
+			<input type="search" id="searchbox" name="searchString" class="form-control"
 				value="" placeholder="Search name">
 			<input type="submit" id="searchsubmit"
 				value="Filter by name"
 				class="btn btn-primary">
 		</form>
 		</div>
+		
 		<div class="col-md-2">
 		<a id="add" href="addComputer" role="button" class="btn btn-success pull-right">Add Computer</a>
 		</div>

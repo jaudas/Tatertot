@@ -20,7 +20,7 @@ import utils.FormatUtils;
 
 public class ComputerDaoImpl implements ComputerDao {
 
-	private static final String URL = "jdbc:mysql://127.0.0.1:8889/computer-database-db?zeroDateTimeBehavior=convertToNull";
+	private static final String URL = "jdbc:mysql://127.0.0.1:3306/computer-database-db?zeroDateTimeBehavior=convertToNull";
 	private static final String USER = "root";
 	private static final String PASSWORD = "root";
 
@@ -43,6 +43,15 @@ public class ComputerDaoImpl implements ComputerDao {
 	}
 
 	/** HIBERNATE **/
+/*	@Override
+	public List<User> getAll() {
+		EntityManagerFactory entityManagerFactory = DaoManager.getInstance().getEntityManagerFactory();
+		EntityManager entityManager = entityManagerFactory.createEntityManager();
+		return entityManager.createQuery("select c from Computer c").getResultList();
+	}*/
+	
+	
+	/**JDBC**/
 	@Override
 	public List<Computer> getAll() {
 
@@ -160,19 +169,84 @@ public class ComputerDaoImpl implements ComputerDao {
 		return listComputer;
 	}
 
+	
+	public List<Computer> getAll(
+            int offset, 
+            int noOfRecords,
+            String searchString){
+
+		List<Computer> listComputer = new LinkedList<Computer>() ;
+		
+		Connection connection = null;
+		Statement statement = null;
+		
+		String query;
+		
+		if(searchString == null){
+			query = "select SQL_CALC_FOUND_ROWS * from computer LEFT JOIN company ON company.id = computer.company_id limit "
+					+ offset + ", " + noOfRecords;
+		}
+		
+		else {
+			query = "select SQL_CALC_FOUND_ROWS * from computer LEFT JOIN company ON company.id = computer.company_id WHERE computer.name LIKE '%"+  searchString +"%' limit "
+					+ offset + ", " + noOfRecords;
+		}
+
+
+		try {
+			connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			while (resultSet.next()) {
+				// Lecture de la table ordinateur
+				Long idComputer = resultSet.getLong("computer.id");
+				String nameComputer = resultSet.getString("computer.name");
+				Timestamp introduced = resultSet
+						.getTimestamp("computer.introduced");
+				Timestamp discontinued = resultSet
+						.getTimestamp("computer.discontinued");
+
+				// Lecture de la table company
+				int idCompany = resultSet.getInt("company.id");
+				String nameCompany = resultSet.getString("company.name");
+				Company company = new Company(idCompany, nameCompany);
+
+				// Cr�ation de l'objet computer
+				Computer c = new Computer();
+				c.setIdComputer(idComputer);
+				c.setNameComputer(nameComputer);
+				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
+				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
+				c.setCompany(company);
+				listComputer.add(c);
+				System.out.println(c.toString());
+			}
+			resultSet.close();
+			System.out.println("Nb ordi : " + listComputer.size());
+
+			resultSet = statement.executeQuery("SELECT FOUND_ROWS()");
+			if (resultSet.next())
+				this.noOfRecords = resultSet.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (statement != null)
+					statement.close();
+				if (connection != null)
+					connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return listComputer;
+	}
+	
+	
 	public int getNoOfRecords() {
 		return noOfRecords;
 	}
 
-	/*
-	 * @SuppressWarnings("unchecked") public List<Computer> getAll(){
-	 * EntityManagerFactory entityManagerFactory =
-	 * DaoManager.getInstance().getEntityManagerFactory(); EntityManager
-	 * entityManager = entityManagerFactory.createEntityManager(); return
-	 * entityManager.createQuery("select c from Computer c").getResultList();
-	 * 
-	 * }
-	 */
 
 	public static ComputerDao getInstance() {
 		if (INSTANCE == null) {

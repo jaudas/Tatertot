@@ -7,6 +7,7 @@ import model.Computer;
 public interface ComputerDao {
 
 	List<Computer> getAll();
+	List<Computer> getAll(int offset, int noOfRecords, String search);
 	List<Computer> getAll(int offset, int noOfRecords);
 
 	Computer getById(Long id);
