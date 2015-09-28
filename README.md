@@ -10,6 +10,7 @@ Fonctionnalités implémentées :
 
 Fonctionnalités bonus :
 	- Pagination de la liste
+	- Personnalisation du CSS
 	- Recherche d'ordinateurs
 	- Suppresion d'ordinateurs
 
