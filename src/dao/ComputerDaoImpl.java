@@ -75,10 +75,10 @@ public class ComputerDaoImpl implements ComputerDao {
 				// Lecture de la table ordinateur
 				Long idComputer = resultSet.getLong("computer.id");
 				String nameComputer = resultSet.getString("computer.name");
-				Timestamp introduced = resultSet
-						.getTimestamp("computer.introduced");
-				Timestamp discontinued = resultSet
-						.getTimestamp("computer.discontinued");
+				String introduced = resultSet
+						.getString("computer.introduced");
+				String discontinued = resultSet
+						.getString("computer.discontinued");
 
 				// Lecture de la table company
 				int idCompany = resultSet.getInt("company.id");
@@ -89,8 +89,8 @@ public class ComputerDaoImpl implements ComputerDao {
 				Computer c = new Computer();
 				c.setIdComputer(idComputer);
 				c.setNameComputer(nameComputer);
-				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
-				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
+				c.setIntroduced(introduced);
+				c.setDiscontinued(discontinued);
 				c.setCompany(company);
 
 				System.out.println("/n L'ordinateur : " + c);
@@ -130,10 +130,10 @@ public class ComputerDaoImpl implements ComputerDao {
 				// Lecture de la table ordinateur
 				Long idComputer = resultSet.getLong("computer.id");
 				String nameComputer = resultSet.getString("computer.name");
-				Timestamp introduced = resultSet
-						.getTimestamp("computer.introduced");
-				Timestamp discontinued = resultSet
-						.getTimestamp("computer.discontinued");
+				String introduced = resultSet
+						.getString("computer.introduced");
+				String discontinued = resultSet
+						.getString("computer.discontinued");
 
 				// Lecture de la table company
 				int idCompany = resultSet.getInt("company.id");
@@ -144,8 +144,8 @@ public class ComputerDaoImpl implements ComputerDao {
 				Computer c = new Computer();
 				c.setIdComputer(idComputer);
 				c.setNameComputer(nameComputer);
-				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
-				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
+				c.setIntroduced(introduced);
+				c.setDiscontinued(discontinued);
 				c.setCompany(company);
 				listComputer.add(c);
 				System.out.println(c.toString());
@@ -203,10 +203,10 @@ public class ComputerDaoImpl implements ComputerDao {
 				// Lecture de la table ordinateur
 				Long idComputer = resultSet.getLong("computer.id");
 				String nameComputer = resultSet.getString("computer.name");
-				Timestamp introduced = resultSet
-						.getTimestamp("computer.introduced");
-				Timestamp discontinued = resultSet
-						.getTimestamp("computer.discontinued");
+				String introduced = resultSet
+						.getString("computer.introduced");
+				String discontinued = resultSet
+						.getString("computer.discontinued");
 
 				// Lecture de la table company
 				int idCompany = resultSet.getInt("company.id");
@@ -217,8 +217,8 @@ public class ComputerDaoImpl implements ComputerDao {
 				Computer c = new Computer();
 				c.setIdComputer(idComputer);
 				c.setNameComputer(nameComputer);
-				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
-				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
+				c.setIntroduced(introduced);
+				c.setDiscontinued(discontinued);
 				c.setCompany(company);
 				listComputer.add(c);
 				System.out.println(c.toString());
@@ -268,26 +268,26 @@ public class ComputerDaoImpl implements ComputerDao {
 			statement = connection.prepareStatement("SELECT * FROM computer WHERE id = (?)");
 			statement.setLong(1, id);
 			resultSet = statement.executeQuery();
-			System.out.println("Query ok");
+
 			Computer c = new Computer();
 			List<Computer> computerList = new ArrayList<Computer>();
 			while (resultSet.next()) {
 				// Lecture de la table ordinateur
 				Long idComputer = resultSet.getLong("computer.id");
 				String nameComputer = resultSet.getString("computer.name");
-				Timestamp introduced = resultSet
-						.getTimestamp("computer.introduced");
-				Timestamp discontinued = resultSet
-						.getTimestamp("computer.discontinued");
-				System.out.println("Ordi ok");
+				String introduced = resultSet
+						.getString("computer.introduced");
+				String discontinued = resultSet
+						.getString("computer.discontinued");
+
 
 
 				// Cr�ation de l'objet computer
 				
 				c.setIdComputer(idComputer);
 				c.setNameComputer(nameComputer);
-				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
-				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
+				c.setIntroduced(introduced);
+				c.setDiscontinued(discontinued);
 
 				
 
@@ -322,10 +322,8 @@ public class ComputerDaoImpl implements ComputerDao {
 			statement = connection.prepareStatement(sql);
 
 			statement.setString(1, computer.getNameComputer());
-			statement.setTimestamp(2,
-					FormatUtils.dateToTimestamp(computer.getIntroduced()));
-			statement.setTimestamp(3,
-					FormatUtils.dateToTimestamp(computer.getDiscontinued()));
+			statement.setString(2,computer.getIntroduced());
+			statement.setString(3,computer.getDiscontinued());
 			statement.setLong(4, computer.getCompany().getIdCompany());
 			statement.execute();
 
