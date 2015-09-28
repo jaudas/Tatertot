@@ -13,14 +13,14 @@ public class Computer {
 	@Id
 	private Long idComputer;
 	private String nameComputer;
-	private Date introduced;
-	private Date discontinued;
+	private String introduced;
+	private String discontinued;
 	private Company company;
 
 
 
-	public Computer(Long idComputer, String nameComputer, Timestamp introduced,
-			Timestamp discontinued, Company company) {
+	public Computer(Long idComputer, String nameComputer, String introduced,
+			String discontinued, Company company) {
 		super();
 		this.idComputer = idComputer;
 		this.nameComputer = nameComputer;
@@ -58,19 +58,19 @@ public class Computer {
 		this.nameComputer = nameComputer;
 	}
 
-	public Date getIntroduced() {
+	public String getIntroduced() {
 		return introduced;
 	}
 
-	public void setIntroduced(Date introduced) {
+	public void setIntroduced(String introduced) {
 		this.introduced = introduced;
 	}
 
-	public Date getDiscontinued() {
+	public String getDiscontinued() {
 		return discontinued;
 	}
 
-	public void setDiscontinued(Date discontinued) {
+	public void setDiscontinued(String discontinued) {
 		this.discontinued = discontinued;
 	}
 
