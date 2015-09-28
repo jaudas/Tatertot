@@ -7,9 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import exception.DAOException;
 import model.Company;
 import model.Computer;
 import utils.FormatUtils;
@@ -258,9 +260,54 @@ public class ComputerDaoImpl implements ComputerDao {
 
 	@Override
 	public Computer getById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		try {
+			connection = DriverManager.getConnection(URL, USER, PASSWORD);
+			statement = connection.prepareStatement("SELECT * FROM computer WHERE id = (?)");
+			statement.setLong(1, id);
+			resultSet = statement.executeQuery();
+			System.out.println("Query ok");
+			Computer c = new Computer();
+			List<Computer> computerList = new ArrayList<Computer>();
+			while (resultSet.next()) {
+				// Lecture de la table ordinateur
+				Long idComputer = resultSet.getLong("computer.id");
+				String nameComputer = resultSet.getString("computer.name");
+				Timestamp introduced = resultSet
+						.getTimestamp("computer.introduced");
+				Timestamp discontinued = resultSet
+						.getTimestamp("computer.discontinued");
+				System.out.println("Ordi ok");
+
+
+				// Cr�ation de l'objet computer
+				
+				c.setIdComputer(idComputer);
+				c.setNameComputer(nameComputer);
+				c.setIntroduced(FormatUtils.timeStampToDate(introduced));
+				c.setDiscontinued(FormatUtils.timeStampToDate(discontinued));
+
+				
+
+				System.out.println(c);
+				computerList.add(c);
+			}
+			if(computerList.size() > 1) {
+				throw new DAOException("Database incorrect, duplicate id :"+id);
+			} else if (computerList.size() == 1) {
+				return computerList.get(0);
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			throw new DAOException("TODO better message");
+		} finally {
+			DaoUtils.closeAll(resultSet, statement, connection);
+		}
 	}
+	
 
 	@Override
 	public void insert(Computer computer) {
@@ -280,6 +327,28 @@ public class ComputerDaoImpl implements ComputerDao {
 			statement.setTimestamp(3,
 					FormatUtils.dateToTimestamp(computer.getDiscontinued()));
 			statement.setLong(4, computer.getCompany().getIdCompany());
+			statement.execute();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DaoUtils.closeAll(resultSet, statement, connection);
+		}
+
+	}
+	
+	
+	public void delete(Long idComputerToDelete) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			connection = DriverManager.getConnection(URL, USER, PASSWORD);
+
+			String sql = "DELETE FROM computer WHERE id = ?";
+			statement = connection.prepareStatement(sql);
+			statement.setLong(1, idComputerToDelete);
 			statement.execute();
 
 		} catch (Exception e) {

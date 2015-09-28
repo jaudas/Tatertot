@@ -18,13 +18,13 @@
 				</div>
 				<div class="form-group">
 					<label for="introduced">Introduced date</label> <input type="date"
-						class="form-control" id="introduced" pattern="YY-MM-dd"
+						class="form-control" id="introduced" pattern="YYYY-MM-dd"
 						placeholder="Introduced"> <span class="help-block">YYYY-MM-DD</span>
 				</div>
 				<div class="form-group">
 					<label for="discontinued">Discontinued date</label> <input
 						type="date" class="form-control" id="discontinued"
-						pattern="YY-MM-dd" placeholder="Discontinued"> <span
+						pattern="YYYY-MM-dd" placeholder="Discontinued"> <span
 						class="help-block">YYYY-MM-DD</span>
 				</div>
 				<div class="form-group">
@@ -61,7 +61,7 @@
 				</div>
 
 				<div class="actions">
-					<button type="submit" value="Submit" class="btn btn-success">Submit</button>
+					<button type="submit" value="Submit" class="btn btn-success" formtarget="/dashboard">Submit</button>
 					or <a href="dashboard" class="btn btn-danger">Cancel</a>
 				</div>
 			</form>

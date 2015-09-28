@@ -15,4 +15,5 @@ public interface ComputerDao {
 
 	void insert(Computer computer);
 	int getNoOfRecords();
+	void delete(Long idComputerToDelete);
 }

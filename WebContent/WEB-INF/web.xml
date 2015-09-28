@@ -21,11 +21,17 @@
 		<servlet-class>controler.InsertComputerServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>DeleteComputerServlet</servlet-name>
+		<servlet-class>controler.DeleteComputerServlet</servlet-class>
+	</servlet>
+	
 		
 	<servlet-mapping>
 		<servlet-name>ComputerServlet</servlet-name>
 		<url-pattern>/dashboard</url-pattern>
 	</servlet-mapping>
+
 	
 	<servlet-mapping>
 		<servlet-name>InsertComputerServlet</servlet-name>

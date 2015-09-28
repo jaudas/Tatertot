@@ -17,7 +17,6 @@
 				class="btn btn-primary">
 		</form>
 		</div>
-		
 		<div class="col-md-2">
 		<a id="add" href="addComputer" role="button" class="btn btn-success pull-right">Add Computer</a>
 		</div>
@@ -35,17 +34,27 @@
 					<th>Discontinued Date</th>
 					<!-- Table header for Company -->
 					<th>Company</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 
 				<c:forEach items="${requestScope.computers}" var="computer">
+				
 					<tr>
 					<td>${computer.nameComputer}</td>
 					<td>${computer.introduced}</td>
 					<td>${computer.discontinued}</td>
 					<td>${computer.company.nameCompany}</td>
+					<td>
+					<form action="DeleteComputerServlet" method="POST" >
+					        <a href="dashboard"><button role="form" type="submit" class="btn btn-danger btn-sm" name="delete" value="${computer.idComputer}" title="Delete" >Delete</button>
+							</a>
+					</form>			
+					</td>
+					
 					</tr>
+				
 			</c:forEach>
 			</tbody>
 		</table>
@@ -55,17 +64,17 @@
   			<ul class="pagination">
    			<li>
       			<c:if test="${currentPage != 1}">
-        		<a href="dashboard?page=${currentPage - 1}"><span aria-hidden="true">&laquo;</span></a>
+        		<a href="dashboard?page=${currentPage - 1}&searchString=${searchName}"><span aria-hidden="true">&laquo;</span></a>
         		</c:if>
       		</li>
     		<li><c:forEach begin="1" end="${noOfPages}" var="i">
-		                        <a href="dashboard?page=${i}">${i}</a>
+		                        <a href="dashboard?page=${i}&searchString=${searchName}">${i}</a>
 		        </c:forEach>
     		</li>
 	    	<li>
-		      <a href="#" aria-label="Next">
-		        <span aria-hidden="true">&raquo;</span>
-		      </a>
+	    	<c:if test="${currentPage != noOfPages}">
+		      <a href="dashboard?page=${currentPage + 1}&searchString=${searchName}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+		     </c:if>
 		    </li>
   			</ul>
 		</nav>

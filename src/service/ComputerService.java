@@ -13,5 +13,7 @@ public interface ComputerService {
 	Computer getById(Long id);
 
 	void insert(Computer computer);
+	void delete(Long idComputer);
+
 
 }

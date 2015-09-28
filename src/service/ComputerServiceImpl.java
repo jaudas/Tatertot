@@ -41,5 +41,9 @@ public class ComputerServiceImpl implements ComputerService {
 		return computerDao.getAll(offset, noOfRecords, searchString);
 		
 	}
+	
+	public void delete(Long id) {
+		computerDao.delete(id);
+	}
 
 }
